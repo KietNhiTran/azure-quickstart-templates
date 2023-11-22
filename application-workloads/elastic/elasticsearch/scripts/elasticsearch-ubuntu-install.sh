@@ -423,7 +423,7 @@ if [ ${INSTALL_MARVEL} -ne 0 ]; then
         /usr/share/elasticsearch/bin/plugin install license
         /usr/share/elasticsearch/bin/plugin install marvel-agent
     else
-        /usr/share/elasticsearch/bin/plugin -i elasticsearch/marvel/1.3.1
+        /usr/share/elasticsearch/bin/plugin install marvel-agent
     fi
 fi
 
