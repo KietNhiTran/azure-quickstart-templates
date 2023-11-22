@@ -115,7 +115,7 @@ install_java()
 
     # tar xzf jdk-8u291-linux-x64.tar.gz -C /var/lib
     log "install java"
-    sudo apt update && sudo apt install openjdk-8-jre-headless
+    sudo apt update && sudo apt install openjdk-8-jre-headless -y
 
     log "export java_home"
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
