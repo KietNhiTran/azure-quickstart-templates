@@ -96,25 +96,30 @@ install_java()
         return
     fi
 
-    log "Installing Java"
-    RETRY=0
-    MAX_RETRY=5
-    while [ $RETRY -lt $MAX_RETRY ]; do
-        log "Retry $RETRY: downloading jdk-8u291-linux-x64.tar.gz"
-        wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u291-b10/d7fc238d0cbf4b0dac67be84580cfb4b/jdk-8u291-linux-x64.tar.gz
-        if [ $? -ne 0 ]; then
-            let RETRY=RETRY+1
-        else
-            break
-        fi
-    done
-    if [ $RETRY -eq $MAX_RETRY ]; then
-        log "Failed to download jdk-8u291-linux-x64.tar.gz"
-        exit 1
-    fi
+    #log "Installing Java"
+    #RETRY=0
+    #MAX_RETRY=5
+    #while [ $RETRY -lt $MAX_RETRY ]; do
+    #    log "Retry $RETRY: downloading jdk-8u291-linux-x64.tar.gz"
+    #    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u291-b10/d7fc238d0cbf4b0dac67be84580cfb4b/jdk-8u291-linux-x64.tar.gz
+    #    if [ $? -ne 0 ]; then
+    #        let RETRY=RETRY+1
+    #    else
+    #        break
+    #    fi
+    # done
+    # if [ $RETRY -eq $MAX_RETRY ]; then
+    #    log "Failed to download jdk-8u291-linux-x64.tar.gz"
+    #    exit 1
+    # fi
 
-    tar xzf jdk-8u291-linux-x64.tar.gz -C /var/lib
-    export JAVA_HOME=/var/lib/jdk1.8.0_291
+    # tar xzf jdk-8u291-linux-x64.tar.gz -C /var/lib
+    log "install java"
+    sudo apt update && sudo apt install openjdk-8-jre-headless
+
+    log "export java_home"
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    #export JAVA_HOME=/var/lib/jdk1.8.0_291
     export PATH=$PATH:$JAVA_HOME/bin
     log "JAVA_HOME: $JAVA_HOME"
     log "PATH: $PATH"
